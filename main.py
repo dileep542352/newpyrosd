@@ -26,16 +26,13 @@ from pyrogram.types import User, Message
 import re
 import os
 import io
-
-API_ID = 14560088
-API_HASH = "74a2665339484da3eaaed5f4fe16da79"
-BOT_TOKEN = "5509916510:AAG2fow3mScpTf3VzMnDzAGO99nPZnYLIxw"
+import requests
 bot = Client(
     "bot",
-    bot_token=BOT_TOKEN,
-    api_id=API_ID,
-    api_hash=API_HASH
-)
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
+) 
 
 @bot.on_message(filters.command(["pyro"]))
 async def account_login(bot: Client, m: Message):
